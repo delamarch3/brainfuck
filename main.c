@@ -22,8 +22,7 @@ outer:
         case ',': *data = (unsigned char)getchar(); break;
         case '[': if (*data == 0) { while ((c = *program++)) { switch (c) { case ']': if (stack == 0) { goto outer; } else { stack--; }; break; case '[': stack++; break; } } } break;
         case ']': if (*data != 0) { program--; while ((c = *--program)) { switch (c) { case '[': if (stack == 0) { goto outer; } else { stack--; }; break; case ']': stack++; break; } } } break;
-        case '\n': case '\t': case ' ': continue;
-        default: break;
+        default: continue;
         }
     }
     // clang-format on
